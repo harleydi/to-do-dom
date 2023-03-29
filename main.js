@@ -3,7 +3,7 @@ let todoSubmit = document.querySelector('#todoSubmit')
 let todoText = document.querySelector('#todoText')
 let list = document.querySelector('ul')
 let trash = document.querySelector('#trash')
-let items = document.querySelectorAll('li')
+let liHolder = document.querySelectorAll('#li-div')
 let deleteAll = document.querySelector('#delete-all')
 let delCompleted = document.querySelector('#del-completed')
 let delOne = document.querySelector('#erase')
@@ -58,9 +58,7 @@ form.addEventListener('submit', function(event){
 
     })
 
-    function change() {
-        
-    }
+    
 
     del.addEventListener('click', function(){
         liDiv.remove()
@@ -88,10 +86,11 @@ form.addEventListener('submit', function(event){
 /* -------------------------------------------------------------------------- */
 
 deleteAll.addEventListener('click', function(event){
-    event.preventDefault()
-    for (let i = 0; i < todos.length; i++) {
-        todos[i].remove()
-    }
+    // event.preventDefault()
+    let liItems = document.querySelectorAll('#li-div')
+ 
+    liItems.forEach(item => item.remove())
+ 
 })
 
 
@@ -99,17 +98,16 @@ deleteAll.addEventListener('click', function(event){
 /*                           DELETE COMPLETED TODOS                           */
 /* -------------------------------------------------------------------------- */
 
-delCompleted.addEventListener('click', function(event){
-    // event.preventDefault()
-    for (let i = 0; i < todos.length; i++) {
-        if (todos[i].classList.contains('completed')) {
-            todos[i].remove()
-            console.log(list)
+delCompleted.addEventListener('click', function(){
+    let liItems = document.querySelectorAll('#li-div')
+    let items = document.querySelectorAll('#item-class')
 
+    
+    items.forEach(item => {
+        if (item.classList.contains('completed')) {
+            item.parentElement.remove()
         }
-    }
-    // list.append(todos)
-    // todos.forEach(todo => list.append(todo))
+    })
 })
 
 
