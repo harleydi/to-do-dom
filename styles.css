@@ -1,8 +1,78 @@
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #31081F;
+}
+
+h1 {
+    color: #DCE0D9;
+}
+
+#todoText {
+    height: 25px;
+    width: 250px;
+    text-align: center;
+}
+
+#todoSubmit {
+    height: 30px;
+    background: #6B0F1A;
+    border: none;
+    color: #DCE0D9;
+
+}
+
+.other-btns {
+    margin: 10px 0;
     
 }
 
+.btns {
+    height: 30px;
+    width: 160px;
+    background: #6B0F1A;
+    border: none;
+    color: #DCE0D9;
+    font-size: medium;
+}
+
+#list {
+    width: 70%;
+    /* border: 2px solid black; */
+    padding: 0;
+}
+
+#li-div {
+    display: flex;
+    background: #6B0F1A;
+    height: 40px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+li {
+    display: flex;
+    font-size: x-large;
+    color: #DCE0D9;
+    list-style: none;
+}
+
+
+
+li button {
+    display: flex;
+    justify-content: flex-end;
+}
 
 .completed {
     text-decoration: line-through;
+}
+
+#item-container {
+    display: flex;
 }

@@ -4,10 +4,13 @@ let todoText = document.querySelector('#todoText')
 let list = document.querySelector('ul')
 let trash = document.querySelector('#trash')
 let items = document.querySelectorAll('li')
-let deleteAll = document.querySelector('button')
+let deleteAll = document.querySelector('#delete-all')
 let delCompleted = document.querySelector('#del-completed')
+let delOne = document.querySelector('#erase')
+let edit = document.querySelector('#edit')
 
 let todos = []
+
 
 /* -------------------------------------------------------------------------- */
 /*                              CREATE/VIEW TODOS                             */
@@ -16,26 +19,68 @@ let todos = []
 form.addEventListener('submit', function(event){
     event.preventDefault()
 
+    let liDiv = document.createElement('div')
+    liDiv.setAttribute('id', 'li-div')
     
     let item = document.createElement('li')
-   
-
+    item.setAttribute('id', 'item-class')
     item.innerText = todoText.value
-    
+
+    let btnDiv = document.createElement('div')
+    btnDiv.setAttribute('id', 'btn-div')
+
+    let edit = document.createElement('button')
+    edit.setAttribute('id', 'edit')
+    edit.innerText = 'Edit'
+
+    let del = document.createElement('button')
+    del.setAttribute('id', 'erase')
+    del.innerText = 'Delete'
+
+    liDiv.appendChild(item)
+    liDiv.appendChild(btnDiv)
+    btnDiv.appendChild(edit)
+    btnDiv.appendChild(del)
+    list.appendChild(liDiv)
     
     item.addEventListener('click', function(){
         item.classList.toggle('completed')
     })
+
+    todoText.value = ''
+
+    edit.addEventListener('click', function(){
+        todoText.value = item.innerText
+        edit.innerText = 'Done' 
+        item.value = todoText.value
+   
+        
+
+    })
+
+    function change() {
+        
+    }
+
+    del.addEventListener('click', function(){
+        liDiv.remove()
+    })
     
     
-    // div.append('<i class="fa-solid fa-trash"></i>')
+    
+    
+   
 
     
-    list.appendChild(item)
-    todos.push(item)
     
-    todoText.value = ''
 })
+
+
+/* -------------------------------------------------------------------------- */
+/*                             EDIT TODO                            */
+/* -------------------------------------------------------------------------- */
+
+
 
 
 /* -------------------------------------------------------------------------- */
@@ -55,12 +100,21 @@ deleteAll.addEventListener('click', function(event){
 /* -------------------------------------------------------------------------- */
 
 delCompleted.addEventListener('click', function(event){
-    event.preventDefault()
+    // event.preventDefault()
     for (let i = 0; i < todos.length; i++) {
-        let todo = todos[i]
         if (todos[i].classList.contains('completed')) {
-            todos.splice(i, 1)
+            todos[i].remove()
+            console.log(list)
+
         }
     }
-    todos.forEach(todo => list.append(todo))
+    // list.append(todos)
+    // todos.forEach(todo => list.append(todo))
 })
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 EDIT TODOS                                 */
+/* -------------------------------------------------------------------------- */
+
+
